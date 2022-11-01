@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>login</title>
+    <title>Title</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -35,24 +35,39 @@
             </div>
         </div>
     </nav>
-     @if(!empty($message))
-        <div class="alert alert-success"> {{ $message }}</div>
-        @endif
-            <form action="{{url('/')}}/login" method="post">
-           @csrf
-            <div class="container">
-              <h1>login</h1>
-               <div class="form-group">
-               <label class="form">email</label>
-                  <input type="email" placeholder="email" id="email" class="form-control" name="email" required />
-               </div>
-             <div class="form-group">
-              <label class="form">password</label>
-                  <input type="password" placeholder="password" id="password" class="form-control" name="password" required />           
-              </div> 
-             <div class="d-grid mx-auto">
-                 <button type="submit" class="btn btn-primary">log_in</button>
-        </div>
-</form>     
-</body>
+    <biv class="containre">
+    <h1 style="text-align:center ;">USER LIST</h1>
+        <a href="{{route('user.creact')}}">
+        <button class="btn btn-primary d-inline-block m-2 float-right">ADD REGISTER</button>
+        </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>username</th>
+                    <th>email</th>
+                    <th>password</th>
+                    <th>phona_no</th>
+                    <th>gender</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $userdata)
+                <tr>
+                    <td>{{$userdata->firstname}}</td>
+                    <td>{{$userdata->lastname}}</td>
+                    <td>{{$userdata->username}}</td>
+                    <td>{{$userdata->email}}</td>
+                    <td>{{$userdata->password}}</td>
+                    <td>{{$userdata->phona_no}}</td>
+                    <td>{{$userdata->gender}}</td>
+                    <td>{{$userdata->Image}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </biv>
+  </body>
 </html>
