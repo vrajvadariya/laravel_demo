@@ -48,7 +48,12 @@ class Registrationcontroller extends Controller
                      // die;
                    return view("login")->with("message" , "Login Fail, please check email id");  
                  }
-                return redirect('index')->with("message" , "Login Fail, please check email id ");   
+                 else
+                 {
+                 return view("login")->with("message" , "Login Fail, please check password id");
+                }
+
+             //   return redirect('index')->with("message" , "Login Fail, please check email id ");   
     }
   
 
@@ -84,7 +89,7 @@ class Registrationcontroller extends Controller
             $file =  $request->file('image');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('/public/uploads/Registration/',$filename);
+            $file->move('/public/uploads/',$filename);
             $user->image = $filename;  
         }
         $user->save();
@@ -97,5 +102,11 @@ class Registrationcontroller extends Controller
         $users = User::all();
         $data = compact('users');
         return view('user-view')->with($data);
+    }
+
+
+    public function userview()
+    {
+        return view('view');
     }
 }
