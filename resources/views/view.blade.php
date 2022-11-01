@@ -23,7 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/insert') }}">Register</a>
                     </li>
-                
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/user/view') }}">users</a>
+                    </li>
             </div>
         </div>
     </nav>

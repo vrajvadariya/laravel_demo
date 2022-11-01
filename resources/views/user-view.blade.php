@@ -37,33 +37,32 @@
     </nav>
     <biv class="containre">
     <h1 style="text-align:center ;">USER LIST</h1>
-        <a href="{{route('user.creact')}}">
-        <button class="btn btn-primary d-inline-block m-2 float-right">ADD REGISTER</button>
-        </a>
         <table class="table">
             <thead>
                 <tr>
+                    <th>id</th>
+                    <th>Image</th>
                     <th>firstname</th>
                     <th>lastname</th>
                     <th>username</th>
                     <th>email</th>
-                    <th>password</th>
                     <th>phona_no</th>
                     <th>gender</th>
-                    <th>Image</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $userdata)
                 <tr>
+                    <td>{{$userdata->id}}</td>
+                    <td>{{$userdata->Image}}</td>
                     <td>{{$userdata->firstname}}</td>
                     <td>{{$userdata->lastname}}</td>
                     <td>{{$userdata->username}}</td>
                     <td>{{$userdata->email}}</td>
-                    <td>{{$userdata->password}}</td>
                     <td>{{$userdata->phona_no}}</td>
                     <td>{{$userdata->gender}}</td>
-                    <td>{{$userdata->Image}}</td>
+                    
                 </tr>
                 @endforeach
             </tbody>

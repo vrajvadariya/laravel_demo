@@ -28,9 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/insert') }}">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/view') }}">users</a>
-                    </li>
+                  
                 </ul>
             </div>
         </div>
@@ -51,7 +49,9 @@
                   <input type="password" placeholder="password" id="password" class="form-control" name="password" required />           
               </div> 
              <div class="d-grid mx-auto">
+                <a href="{{route('users.list')}}">
                  <button type="submit" class="btn btn-primary">log_in</button>
+                 </a>
         </div>
 </form>     
 </body>
