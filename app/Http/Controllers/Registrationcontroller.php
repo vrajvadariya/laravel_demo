@@ -48,12 +48,12 @@ class Registrationcontroller extends Controller
                      // die;
                    return view("login")->with("message" , "Login Fail, please check email id");  
                  }
-                 else
-                 {
-                 return view("login")->with("message" , "Login Fail, please check password id");
-                }
+                //  else
+                //  {
+                //    return view("login")->with("message" , "Login Fail, please check password id");
+                //  }
 
-             //   return redirect('index')->with("message" , "Login Fail, please check email id ");   
+              return redirect('index')->with("message" , "Login Fail, please check password ");   
     }
   
 
@@ -83,18 +83,18 @@ class Registrationcontroller extends Controller
         $user->password = md5($request['password']);
         $user->phona_no = $request['phona_no'];
         $user->gender = $request['gender'];
-        $user->Image = "";
+        $user->image = "";
         if($request->hasFile('image'))
         {
-            $file =  $request->file('image');
+            $file = $request->file('image');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('/public/uploads/',$filename);
+            $file->move('uploads/user/',$filename);
             $user->image = $filename;  
         }
         $user->save();
 
-        return redirect('/user/view');
+        return redirect('/user/view')->with('status','imagr is added successfully');
         //-----------
     }
     public function view()

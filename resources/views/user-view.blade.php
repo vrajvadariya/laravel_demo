@@ -23,12 +23,6 @@
                         <a class="nav-link" href="{{ url('/')}}">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/insert') }}">Register</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/user/view') }}">users</a>
                     </li>
                 </ul>
@@ -55,7 +49,9 @@
                 @foreach ($users as $userdata)
                 <tr>
                     <td>{{$userdata->id}}</td>
-                    <td>{{$userdata->Image}}</td>
+                    <td>
+                        <img src="{{asset('uploads/user/'.$userdata->image)}}" height="50px" width="50px" alt="">
+                    </td>
                     <td>{{$userdata->firstname}}</td>
                     <td>{{$userdata->lastname}}</td>
                     <td>{{$userdata->username}}</td>
