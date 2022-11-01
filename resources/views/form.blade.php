@@ -28,14 +28,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/insert') }}">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/view') }}">users</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <form action="{{url('/')}}/insert" method="post">
+    @if(session('status'))
+    <h6 class="alert alert-success">{{ session('status') }}</h6>
+    @endif
+    <form action="{{url('/')}}/insert" method="post" enctype="multipart/form-data">
       @csrf  
       <div class="container">
         <h1>Regiatration</h1>
@@ -95,7 +95,7 @@
             </span>
         </div>
         <div class="mb-3">
-            <label for="">Upload Image</label>
+            <label for="">image</label>
             <input type="file" name="image" required class="course form-control">
         </div>
         <div>
@@ -104,7 +104,9 @@
             <input type="radio" name="gender" value="male">Male
            <input type="radio" name="gender" value="other">Other
         </div>
+        <a href="{{route('users.list')}}">
             <button type="submit" class="btn btn-primary">Submit</button>
+        </a>    
       </div>
 </form>
 </body>
