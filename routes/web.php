@@ -17,7 +17,8 @@ Route::get('/', function() {
     return view('index');
 });
 
-Route::get('/insert',[Registrationcontroller::class,'index']);
+Route::get('/insert',[Registrationcontroller::class,'index'])->name('user.creact');
 Route::get('/login',[Registrationcontroller::class,'login']);
+Route::get('/user/view',[Registrationcontroller::class,'view']);
 Route::post('login',[Registrationcontroller::class,'userlogin']);
 Route::post('/insert',[Registrationcontroller::class,'store']);

@@ -19,35 +19,35 @@ class Registrationcontroller extends Controller
         return view('login');
     }
 
-    public function userlogin(Request $request)
-    {
-        /*$request->validate(
-            [
-                'email' => 'required|email',
-                'password' => 'required',
-            ]
-            );*/
-        $user = $request->only('email','password');
-            // echo"<pre>";
-            // print_r($user['email']);
-            // print_r(md5($user['password']));
-            // die;
+     public function userlogin(Request $request)
+     {
+         /*$request->validate(
+             [
+                 'email' => 'required|email',
+                 'password' => 'required',
+             ]
+             );*/
+         $user = $request->only('email','password');
+             // echo"<pre>";
+             // print_r($user['email']);
+             // print_r(md5($user['password']));
+             // die;
            
 
                 
-                $userdata = DB::table('user')
-                            ->where('email', '=', $user['email'])
-                            ->where('password', '=', md5($user['password']))
-                            ->get()->first();
-                //  echo"<pre>";
-                //  print_r($userdata->email);
-                //  die;               
-               if (!$userdata) 
-                {
-                    // echo"login fail";
-                    // die;
-                  return view("login")->with("message" , "Login Fail, please check email id");  
-                }
+                 $userdata = DB::table('user')
+                             ->where('email', '=', $user['email'])
+                             ->where('password', '=', md5($user['password']))
+                             ->get()->first();
+                 //  echo"<pre>";
+                 //  print_r($userdata->email);
+                 //  die;               
+                if (!$userdata) 
+                 {
+                     // echo"login fail";
+                     // die;
+                   return view("login")->with("message" , "Login Fail, please check email id");  
+                 }
                 return redirect('index')->with("message" , "Login Fail, please check email id ");   
     }
   
@@ -69,7 +69,7 @@ class Registrationcontroller extends Controller
               'gender' => 'required',
             ]
         );
-               
+             //nsert query
         $user = new User;
         $user->firstname = $request['firstname'];
         $user->lastname = $request['lastname'];
@@ -89,5 +89,13 @@ class Registrationcontroller extends Controller
         }
         $user->save();
 
+        return redirect('/user/view');
+        //-----------
+    }
+    public function view()
+    {
+        $users = User::all();
+        $data = compact('users');
+        return view('user-view')->with($data);
     }
 }
