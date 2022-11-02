@@ -16,7 +16,7 @@ use App\Models\User;
 Route::get('/', function() {
     return view('index');
 });
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/index',[Registrationcontroller::class,'userview'])->name('users.list');
 Route::get('/insert',[Registrationcontroller::class,'index']);
 Route::get('/login',[Registrationcontroller::class,'login']);
