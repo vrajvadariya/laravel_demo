@@ -6,12 +6,16 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Return_;
 
 class Registrationcontroller extends Controller
 {
     public function index()
     {
-        return view('form');
+        $url = url('/insert');
+        $title = "Regiatration";
+        $data = compact('url','title');
+        return view('form')->with($data);
     }
 
     public function login()
@@ -97,6 +101,7 @@ class Registrationcontroller extends Controller
         return redirect('/user/view')->with('status','imagr is added successfully');
         //-----------
     }
+          
     public function view()
     {
         $users = User::all();
@@ -113,5 +118,32 @@ class Registrationcontroller extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return redirect('/');
+      }
+
+        //DELETE//    
+      public function delete($id)
+      {
+        $user = User::find($id);
+        if(!is_null($user)){
+                $user->delete();
+        }
+        return redirect('user/view');
+      }
+
+      public function edit($id)
+      { 
+          $user = user::find($id);
+          if(is_null($user))
+          {
+            //not found
+            return redirect('user/view');
+          }
+          else
+          { 
+            $title = "update user";
+            $url = url('/user/update') ."/". $id;
+            $data = compact('user','url','title');
+            return view('form')->with($data);
+          }
       }
 }

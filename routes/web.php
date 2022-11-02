@@ -19,7 +19,10 @@ Route::get('/', function() {
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/index',[Registrationcontroller::class,'userview'])->name('users.list');
 Route::get('/insert',[Registrationcontroller::class,'index']);
-Route::get('/login',[Registrationcontroller::class,'login']);
+Route::get('/user/delete/{id}',[Registrationcontroller::class,'delete'])->name('user.delete');
+Route::get('/user/edit/{id}',[Registrationcontroller::class,'edit'])->name('user.edit');
+Route::get('/user/update/{id}',[Registrationcontroller::class,'update'])->name('user.update');
 Route::get('/user/view',[Registrationcontroller::class,'view']);
+Route::get('/login',[Registrationcontroller::class,'login']);
 Route::post('login',[Registrationcontroller::class,'userlogin']);
 Route::post('/insert',[Registrationcontroller::class,'store']);
