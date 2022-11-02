@@ -42,6 +42,7 @@
                     <th>email</th>
                     <th>phona_no</th>
                     <th>gender</th>
+                    <th>Action</th>
                     
                 </tr>
             </thead>
@@ -63,7 +64,10 @@
                     <td>{{$userdata->email}}</td>
                     <td>{{$userdata->phona_no}}</td>
                     <td>{{$userdata->gender}}</td>
-                    
+                    <td>
+                        <a href="{{route('user.delete',['id' => $userdata->id])}}"> <button class="btn btn-danger">Delete</button> </a>
+                        <a href="{{route('user.edit',['id' => $userdata->id])}}"><button class="bt btn-primary">Edit</button></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
