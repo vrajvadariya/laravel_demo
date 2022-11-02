@@ -15,11 +15,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/')}}">home</a>
+                        <a class="nav-link" href="{{ url('/user/view')}}">home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/view') }}">users</a>
-                    </li>
+                   
             </div>
         </div>
     </nav>

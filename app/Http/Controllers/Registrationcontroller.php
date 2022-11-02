@@ -109,4 +109,9 @@ class Registrationcontroller extends Controller
     {
         return view('view');
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+      }
 }

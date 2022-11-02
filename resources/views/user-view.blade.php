@@ -23,14 +23,14 @@
                         <a class="nav-link" href="{{ url('/')}}">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/view') }}">users</a>
+                        <a class="nav-link" href="{{url('/') }}">logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <biv class="containre">
-    <h1 style="text-align:center ;">USER LIST</h1>
+    <h1 style="text-align:center ;">USER LIST</h1> 
         <table class="table">
             <thead>
                 <tr>
@@ -46,11 +46,16 @@
                 </tr>
             </thead>
             <tbody>
+                  @php
+                    $image ="default/dummy.png";
+                  @endphp
                 @foreach ($users as $userdata)
+
                 <tr>
                     <td>{{$userdata->id}}</td>
                     <td>
-                        <img src="{{asset('uploads/user/'.$userdata->image)}}" height="50px" width="50px" alt="">
+                        
+                        <img src="{{asset('uploads/user/'.$userdata->image)}}" height="50px" width="50px" onerror="this.onerror=null;this.src='{{asset($image)}}';" alt="">
                     </td>
                     <td>{{$userdata->firstname}}</td>
                     <td>{{$userdata->lastname}}</td>
