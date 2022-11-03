@@ -23,6 +23,9 @@
                         <a class="nav-link" href="{{ url('/')}}">home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.create')}}">user create</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/') }}">logout</a>
                     </li>
                 </ul>
@@ -30,18 +33,18 @@
         </div>
     </nav>
     <biv class="containre">
-    <h1 style="text-align:center ;">USER LIST</h1> 
+    <h1 style="text-align:center ;">REGIATRATION USER LIST</h1> 
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Image</th>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>username</th>
-                    <th>email</th>
-                    <th>phona_no</th>
-                    <th>gender</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>User name</th>
+                    <th>Email</th>
+                    <th>Mobile number</th>
+                    <th>Gender</th>
                     <th>Action</th>
                     
                 </tr>
@@ -65,8 +68,9 @@
                     <td>{{$userdata->phona_no}}</td>
                     <td>{{$userdata->gender}}</td>
                     <td>
-                        <a href="{{route('user.delete',['id' => $userdata->id])}}"> <button class="btn btn-danger">Delete</button> </a>
-                        <a href="{{route('user.edit',['id' => $userdata->id])}}"><button class="bt btn-primary">Edit</button></a>
+                       <a href="{{route('user.show',['id' => $userdata->id])}}"> <button class="btn btn-primary">show</button> </a>
+                       <a href="{{route('user.delete',['id' => $userdata->id])}}"> <button class="btn btn-danger">Delete</button> </a>
+                       <a href="{{route('user.edit',['id' => $userdata->id])}}"><button class="bt btn-primary">Edit</button></a>
                     </td>
                 </tr>
                 @endforeach

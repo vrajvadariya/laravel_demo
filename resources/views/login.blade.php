@@ -48,7 +48,7 @@
                   <input type="password" placeholder="password" id="password" class="form-control" name="password" required />           
               </div> 
              <div class="d-grid mx-auto">
-                <a href="{{route('users.list')}}">
+             <a href="{{route('users.list')}}"> 
                  <button type="submit" class="btn btn-primary">log_in</button>
                  </a>
         </div>

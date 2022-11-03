@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <style>
-    button{
-        margin: 10px;
-    }
-  </style>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,35 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
-        <div class="container">
-            <a class="navbar-brand mr-auto" href="#">VP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/')}}">home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/insert') }}">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    @if(session('status'))
+@if(session('status'))
     <h6 class="alert alert-success">{{ session('status') }}</h6>
     @endif
     <form action="{{url('/')}}/insert" method="post" enctype="multipart/form-data">
       @csrf  
       <div class="container">
-        <h1>Regiatration</h1>
+        <h1>CREATE USER LIST</h1>
         <div class="form-group">
           <label class="form">First name</label>
             <input type="text" name="firstname" id="" class="form-control" placeholder="" aria-describedby="helpId"/>
@@ -110,10 +83,8 @@
            <input type="radio" name="gender" value="other" />Other</option>
         </div>
         <div>
-        <a href="{{route('users.list')}}">
-            <button type="submit" class="btn btn-primary" style="color:white mi; ">Submit</button>
-        </a>
-        </div>    
+            <button type="submit" class="btn btn-primary">Submit</button>  
+        </div>
       </div>
 </form>
 </body>
