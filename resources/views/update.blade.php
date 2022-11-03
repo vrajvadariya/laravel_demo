@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <style>
-    button{
-        margin: 10px;
-    }
-  </style>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -43,10 +38,10 @@
     <form action="{{url('/')}}/insert" method="post" enctype="multipart/form-data">
       @csrf  
       <div class="container">
-        <h1>Regiatration</h1>
+        <h1>Update</h1>
         <div class="form-group">
           <label class="form">First name</label>
-            <input type="text" name="firstname" id="" class="form-control" placeholder="" aria-describedby="helpId"/>
+            <input type="text" name="firstname" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->firstname}}"/>
             <span class="text-danger">
                 @error('firstname')
                     {{$message}}
@@ -55,7 +50,7 @@
         </div>
         <div class="form-group">
           <label class="form">Last name</label>
-            <input type="text" name="lastname" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+            <input type="text" name="lastname" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->lastname}}"/>
             <span class="text-danger">
                 @error('lastname')
                     {{$message}}
@@ -64,7 +59,7 @@
         </div>
         <div class="form-group">
           <label class="form">User name</label>
-            <input type="text" name="username" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+            <input type="text" name="username" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->username}}"/>
             <span class="text-danger">
             @error('username')
                     {{$message}}
@@ -73,7 +68,7 @@
         </div>
         <div class="form-group">
           <label class="form">Email</label>
-            <input type="text" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId"/>
+            <input type="text" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->email}}"/>
             <span class="text-danger">
                 @error('email')
                     {{$message}}
@@ -82,17 +77,11 @@
         </div>
         <span class="text-danger"></span>
         <div class="form-group">
-          <label class="form">Password</label>
-            <input type="password" name="password" id="" class="form-control" placeholder="" aria-describedby="helpId" />
-            <span class="text-danger">
-                @error('password')
-                    {{$message}}
-                @enderror
             </span>
         </div>
         <div class="form-group">
           <label class="form">Mobile number</label>
-            <input type="text" name="phona_no" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+            <input type="text" name="phona_no" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->phona_no}}"/>
             <span class="text-danger">
                 @error('phon no:')
                     {{$message}}
@@ -102,18 +91,20 @@
         <div class="mb-3">
             <label for="">Image</label>
             <input type="file" name="image" required class="course form-control" />
+            @php
+                $image ="default/dummy.png";
+            @endphp
+            <img src="{{asset('uploads/user/'.$user->image)}}" height="50px" width="50px" onerror="this.onerror=null;this.src='{{asset($image)}}';" alt="">
         </div>
-        <label>Gender:</label>
-        <div>
-            <input type="radio" name="gender" value="female" />Female</option>
-            <input type="radio" name="gender" value="Male"  />Male</option>
-           <input type="radio" name="gender" value="other" />Other</option>
+        <labe>Gender:</label>
+        <div >
+            <input type="radio" name="gender" value="female" {{ $user->gender == 'female' ? 'checked' : ''}} />Female</option>
+            <input type="radio" name="gender" value="Male" {{ $user->gender == 'Male' ? 'checked' : ''}} />Male</option>
+           <input type="radio" name="gender" value="other" {{ $user->gender == 'other' ? 'checked' : ''}} />Other</option>
         </div>
-        <div>
         <a href="{{route('users.list')}}">
-            <button type="submit" class="btn btn-primary" style="color:white mi; ">Submit</button>
-        </a>
-        </div>    
+            <button type="button" class="btn btn-primary">Update</button>
+        </a>    
       </div>
 </form>
 </body>

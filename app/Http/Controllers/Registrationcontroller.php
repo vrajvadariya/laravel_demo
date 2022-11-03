@@ -13,14 +13,18 @@ class Registrationcontroller extends Controller
     public function index()
     {
         $url = url('/insert');
-        $title = "Regiatration";
-        $data = compact('url','title');
+        $data = compact('url',);
         return view('form')->with($data);
     }
 
     public function login()
     {
         return view('login');
+    }
+
+    public function update()
+    {
+        return view('update');
     }
 
      public function userlogin(Request $request)
@@ -57,7 +61,7 @@ class Registrationcontroller extends Controller
                 //    return view("login")->with("message" , "Login Fail, please check password id");
                 //  }
 
-              return redirect('index')->with("message" , "Login Fail, please check password ");   
+              return redirect('/user/view')->with("message" , "Login Fail, please check password ");   
     }
   
 
@@ -98,9 +102,10 @@ class Registrationcontroller extends Controller
         }
         $user->save();
 
-        return redirect('/user/view')->with('status','imagr is added successfully');
+        return redirect('/user/view')->with('status','image is added successfully');
         //-----------
     }
+    
           
     public function view()
     {
@@ -120,6 +125,16 @@ class Registrationcontroller extends Controller
         return redirect('/');
       }
 
+      // user show//
+      public function show($id)
+      { 
+          $user = user::find($id);
+          return view('show',compact('user'));
+          
+      }
+
+      
+
         //DELETE//    
       public function delete($id)
       {
@@ -129,7 +144,7 @@ class Registrationcontroller extends Controller
         }
         return redirect('user/view');
       }
-
+            //edit//
       public function edit($id)
       { 
           $user = user::find($id);
@@ -140,10 +155,79 @@ class Registrationcontroller extends Controller
           }
           else
           { 
-            $title = "update user";
             $url = url('/user/update') ."/". $id;
-            $data = compact('user','url','title');
-            return view('form')->with($data);
+            $data = compact('user','url',);
+            return view('update')->with($data);
           }
       }
+
+      public function userupdate($id, Request $request)
+      {
+
+        $user = user::find($id);
+        $user->firstname = $request['firstname'];
+        $user->lastname = $request['lastname'];
+        $user->username = $request['username'];
+        $user->email = $request['email'];
+        $user->phona_no = $request['phona_no'];
+        $user->gender = $request['gender'];
+        $user->image = "";
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/user/',$filename);
+            $user->image = $filename;  
+        }
+        $user->save();
+        return redirect('/user/view');
+      }
+
+
+      //  user crud //
+
+      public function index1()
+      {
+        return view('create');
+      }
+      public function stores(Request $request)
+    {
+      
+        echo"<pre>";
+        print_r($request->all());
+
+       $request->validate(
+            [
+              'firstname' => 'required',
+              'lastname'  => 'required',
+              'username' => 'required',
+              'email' => 'required|email',
+              'password' => 'required',
+              'phona_no' => 'required',
+              'gender' => 'required',
+            ]
+        );
+             //nsert query
+        $user = new User;
+        $user->firstname = $request['firstname'];
+        $user->lastname = $request['lastname'];
+        $user->username = $request['username'];
+        $user->email = $request['email'];
+        $user->password = md5($request['password']);
+        $user->phona_no = $request['phona_no'];
+        $user->gender = $request['gender'];
+        $user->image = "";
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/user/',$filename);
+            $user->image = $filename;  
+        }
+        $user->save();
+
+        return redirect('/user/view')->with('status','image is added successfully');
+    }
 }
