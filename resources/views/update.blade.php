@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+      
+     <style>
+        input[type=button] 
+        {
+            margin: 8px ;
+        }
+        img
+        {
+            margin: 10px ;
+        }
+    </style> 
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -35,8 +46,9 @@
     @if(session('status'))
     <h6 class="alert alert-success">{{ session('status') }}</h6>
     @endif
-    <form action="{{url('/')}}/insert" method="post" enctype="multipart/form-data">
+    <form action="{{url('/user/update/'.$user->id)}}" method="POST" enctype="multipart/form-data">
       @csrf  
+      @method('PUT')
       <div class="container">
         <h1>Update</h1>
         <div class="form-group">
@@ -83,7 +95,7 @@
           <label class="form">Mobile number</label>
             <input type="text" name="phona_no" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{$user->phona_no}}"/>
             <span class="text-danger">
-                @error('phon no:')
+                @error('phona_no')
                     {{$message}}
                 @enderror
             </span>
@@ -94,7 +106,7 @@
             @php
                 $image ="default/dummy.png";
             @endphp
-            <img src="{{asset('uploads/user/'.$user->image)}}" height="50px" width="50px" onerror="this.onerror=null;this.src='{{asset($image)}}';" alt="">
+            <img src="{{asset('uploads/user/'.$user->image)}}" height="55px" width="55px" onerror="this.onerror=null;this.src='{{asset($image)}}';" alt="">
         </div>
         <labe>Gender:</label>
         <div >
@@ -102,9 +114,7 @@
             <input type="radio" name="gender" value="Male" {{ $user->gender == 'Male' ? 'checked' : ''}} />Male</option>
            <input type="radio" name="gender" value="other" {{ $user->gender == 'other' ? 'checked' : ''}} />Other</option>
         </div>
-        <a href="{{route('users.list')}}">
-            <button type="button" class="btn btn-primary">Update</button>
-        </a>    
+            <input type="submit" class="btn btn-primary" value="Update">   
       </div>
 </form>
 </body>

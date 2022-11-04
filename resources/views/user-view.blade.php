@@ -23,9 +23,6 @@
                         <a class="nav-link" href="{{ url('/')}}">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.create')}}">user create</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/') }}">logout</a>
                     </li>
                 </ul>
@@ -33,7 +30,9 @@
         </div>
     </nav>
     <biv class="containre">
-    <h1 style="text-align:center ;">REGIATRATION USER LIST</h1> 
+         <a href="{{ route('user.create') }}"> 
+            <button class="btn btn-primary b-inline-block m-2 float-right"> ADD USER </button>
+         </a>
         <table class="table">
             <thead>
                 <tr>
@@ -69,8 +68,8 @@
                     <td>{{$userdata->gender}}</td>
                     <td>
                        <a href="{{route('user.show',['id' => $userdata->id])}}"> <button class="btn btn-primary">show</button> </a>
-                       <a href="{{route('user.delete',['id' => $userdata->id])}}"> <button class="btn btn-danger">Delete</button> </a>
-                       <a href="{{route('user.edit',['id' => $userdata->id])}}"><button class="bt btn-primary">Edit</button></a>
+                       <a onclick="return confirm('Are You sure you want to delete this user ? ')" href="{{route('user.delete',['id' => $userdata->id])}}"> <button class="btn btn-danger">Delete</button> </a>
+                       <a href="{{route('user.edit',['id' => $userdata->id])}}"><button class="btn btn-primary">Edit</button></a>
                     </td>
                 </tr>
                 @endforeach
