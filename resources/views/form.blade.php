@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
   <style>
-    button{
-        margin: 10px;
+    input[type=button] 
+    {
+        margin: 12px;
     }
   </style>
     <title>Title</title>
@@ -94,7 +95,7 @@
           <label class="form">Mobile number</label>
             <input type="text" name="phona_no" id="" class="form-control" placeholder="" aria-describedby="helpId" />
             <span class="text-danger">
-                @error('phon no:')
+                @error('phona_no')
                     {{$message}}
                 @enderror
             </span>
@@ -103,7 +104,7 @@
             <label for="">Image</label>
             <input type="file" name="image" required class="course form-control" />
         </div>
-        <label>Gender:</label>
+        <label>Gender</label>
         <div>
             <input type="radio" name="gender" value="female" />Female</option>
             <input type="radio" name="gender" value="Male"  />Male</option>
@@ -111,7 +112,7 @@
         </div>
         <div>
         <a href="{{route('users.list')}}">
-            <button type="submit" class="btn btn-primary" style="color:white mi; ">Submit</button>
+        <input type="button" class="btn btn-primary" value="submit">
         </a>
         </div>    
       </div>

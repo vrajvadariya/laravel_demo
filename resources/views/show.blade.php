@@ -1,23 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-  @foreach ($users as $userdata)
-    <div class="jumbotron text-center">
-        <div>
-            <a href="{{ route('user.list') }}" class="btn btn-default">Back</a>
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2> Show User</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('user.list') }}"> Back</a>
+            </div>
         </div>
-        <br />
-        <img src="{{ URL::to('/') }}/uploads/user/ {{ $userdata->image}}" class="img-thumbnail" />
     </div>
-    @endforeach
-  </body>
-</html>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>First name</strong>
+                {{$userdata->firstname}}
+            </div>
+     </div>   
+     <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Id</strong>
+                {{$userdata->id}}
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Lirst name</strong>
+                {{$userdata->lirstname}}
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>User name</strong>
+                {{$userdata->username}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Email</strong>
+                {{$userdata->email}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Mobile number</strong>
+                {{$userdata->phona_no}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Gender</strong>
+                {{$userdata->gender}}
+            </div>
+        </div>
+    </div>
+@endsection
