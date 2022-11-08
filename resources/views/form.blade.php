@@ -44,7 +44,7 @@
     <form action="{{url('/')}}/insert" method="post" enctype="multipart/form-data">
       @csrf  
       <div class="container">
-        <h1>Regiatration</h1>
+        <h1>REGISTRSTION</h1>
         <div class="form-group">
           <label class="form">First name</label>
             <input type="text" name="firstname" id="" class="form-control" placeholder="" aria-describedby="helpId"/>
@@ -95,7 +95,7 @@
           <label class="form">Mobile number</label>
             <input type="text" name="phona_no" id="" class="form-control" placeholder="" aria-describedby="helpId" />
             <span class="text-danger">
-                @error('phona_no')
+                @error('phon no:')
                     {{$message}}
                 @enderror
             </span>
@@ -104,17 +104,15 @@
             <label for="">Image</label>
             <input type="file" name="image" required class="course form-control" />
         </div>
-        <label>Gender</label>
+        <label>Gender:</label>
         <div>
             <input type="radio" name="gender" value="female" />Female</option>
             <input type="radio" name="gender" value="Male"  />Male</option>
            <input type="radio" name="gender" value="other" />Other</option>
         </div>
         <div>
-        <a href="{{route('users.list')}}">
-        <input type="button" class="btn btn-primary" value="submit">
-        </a>
-        </div>    
+            <button type="submit" class="btn btn-primary">Submit</button>  
+        </div>
       </div>
 </form>
 </body>
