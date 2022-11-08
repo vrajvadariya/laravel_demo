@@ -15,9 +15,7 @@ class Registrationcontroller extends Controller
 {
   public function index()
   {
-    $url = url('/insert');
-    $data = compact('url',);
-    return view('form')->with($data);
+    return view('form');
   }
 
   public function login()
@@ -102,6 +100,8 @@ class Registrationcontroller extends Controller
       $user->image = $filename;
     }
     $user->save();
+
+
 
     return redirect('/user/view')->with('status', 'image is added successfully');
     //-----------
