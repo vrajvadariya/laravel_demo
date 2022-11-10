@@ -173,6 +173,7 @@ class Registrationcontroller extends Controller
   {
     return view('create');
   }
+  
   public function stores(Request $request)
   {
 
