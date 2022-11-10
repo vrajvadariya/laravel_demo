@@ -17,7 +17,7 @@ use App\Models\Product;
 |
 */
 Route::get('/', function() {
-    return view('index');
+    return view('master');
 });
  // AdminLTE 3 theme laravel //
 Route::get('/home',[HomeController::class,'index'])->name('home');
